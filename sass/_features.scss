@@ -1,0 +1,35 @@
+.features {
+    grid-column: center-start / center-end;
+    margin: 15rem 0;
+
+    @supports (display: grid) {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        gap: 6rem;
+        align-items: start; //centramos los elementos arriba del todo
+    }
+    //Esta parte es totalmente reutilizable, tenlo en cuenta
+    .feature {
+        float: left;
+        width: 33.3333%;
+        margin-bottom: 6rem;
+
+        @supports (display: grid) {
+            width: auto;
+            margin-bottom: 0;
+        }
+
+        &__icon {
+            fill: $color-primary;
+            width: 4.5rem;
+            height: 4.5rem;
+            grid-area: 1 /1 / 2 / 2;
+            transform: translateY(-1rem);
+        }
+
+        &__text {
+            grid-area: 2 / 2 / -1 / -1;
+            font-size: 1.7rem;
+        }
+    }
+}

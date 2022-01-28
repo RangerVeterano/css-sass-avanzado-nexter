@@ -1,0 +1,74 @@
+// COLOR VARIABLES
+$color-primary: #c69963;
+$color-primary-dark: #b28451;
+
+$color-secondary: #101d2c;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483a;
+$color-grey-dark-2: #6d5d4b;
+
+// FONT VARIABLES
+$font-primary: "Nunito", sans-serif;
+$font-display: "Josefin Sans", sans-serif;
+
+// Responsive breackpoints
+
+$bp-largest: 75rem; //1200px
+$bp-large: 62.5rem; //1000px
+$bp-medium: 50rem; //800px
+$bp-small: 37.5rem; //600px
+// $bp-largest : 75rem;
+
+*,
+*::after,
+*::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit;
+}
+
+html {
+    //El padding y border se restan del alto total y del ancho total
+    box-sizing: border-box;
+    font-size: 62.5%; // yo quiero 10px por defecto son 16px, 10/16 = 0.625 1rem = 10px
+
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 50%;
+    }
+}
+
+body {
+    font-family: $font-primary; //nunito
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template:
+        80vh min-content 40vw repeat(3, min-content) /
+        [sidebar-start] 8rem
+        [sidebar-end full-start] minmax(6rem, 1fr)
+        [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+        [center-end] minmax(6rem, 1fr) [full-end];
+
+    @media only screen and (max-width: $bp-large) {
+        grid-template:
+            6rem 80vh min-content 40vw repeat(3, min-content) /
+            [full-start] minmax(6rem, 1fr)
+            [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+            [center-end] minmax(6rem, 1fr) [full-end];
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-template:
+            6rem calc(100vh - 6rem) /
+            [full-start] minmax(6rem, 1fr)
+            [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+            [center-end] minmax(6rem, 1fr) [full-end];
+    }
+}
